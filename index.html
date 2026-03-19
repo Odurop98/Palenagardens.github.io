@@ -1,0 +1,1382 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Palena Gardens — Hotel & Centre for Leadership, Wellbeing & Culture</title>
+  <meta name="description" content="Palena Gardens — a boutique hotel and Centre for Leadership, Wellbeing & Culture in Takoradi, Ghana. Premium accommodation, dining, and transformative leadership programmes."/>
+  <link rel="preconnect" href="https://fonts.googleapis.com"/>
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet"/>
+  <script src="https://js.paystack.co/v1/inline.js"></script>
+
+  <style>
+    :root {
+      --forest: #2a5e72;
+      --sage: #3f4903;
+      --moss: #5c7a3e;
+      --gold: #c9a84c;
+      --gold-light: #e8c97a;
+      --cream: #f7f2e8;
+      --linen: #ede8db;
+      --charcoal: #111111;
+      --mid: #6b6b5a;
+      --white: #fdfaf4;
+    }
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: 'DM Sans', sans-serif;
+      background: var(--white);
+      color: var(--charcoal);
+      overflow-x: hidden;
+    }
+
+    /* ── SCROLLBAR ── */
+    ::-webkit-scrollbar { width: 6px; }
+    ::-webkit-scrollbar-track { background: var(--cream); }
+    ::-webkit-scrollbar-thumb { background: var(--gold); border-radius: 3px; }
+
+    /* ── NAV ── */
+    nav {
+      position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 1.2rem 4rem;
+      transition: background 0.4s, box-shadow 0.4s;
+    }
+    nav.scrolled {
+      background: rgba(21, 41, 21, 0.97);
+      backdrop-filter: blur(12px);
+      box-shadow: 0 2px 30px rgba(0,0,0,0.25);
+    }
+    .nav-logo {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.5rem;
+      font-weight: 500;
+      color: var(--white);
+      letter-spacing: 0.06em;
+      text-decoration: none;
+    }
+    .nav-logo span { color: var(--gold); }
+    .nav-links {
+      display: flex; gap: 2.5rem; list-style: none;
+    }
+    .nav-links a {
+      font-size: 0.78rem; letter-spacing: 0.15em; text-transform: uppercase;
+      color: rgba(255,255,255,0.82);
+      text-decoration: none;
+      transition: color 0.2s;
+    }
+    .nav-links a:hover { color: var(--gold-light); }
+    .nav-cta {
+      background: var(--gold);
+      color: var(--forest) !important;
+      padding: 0.55rem 1.4rem;
+      border-radius: 2px;
+      font-weight: 500;
+    }
+    .nav-cta:hover { background: var(--gold-light) !important; color: var(--forest) !important; }
+    .hamburger { display: none; flex-direction: column; gap: 5px; cursor: pointer; }
+    .hamburger span { display: block; width: 24px; height: 1.5px; background: var(--white); transition: 0.3s; }
+
+    /* ── HERO ── */
+    #hero {
+      height: 100vh;
+      background:
+        linear-gradient(to bottom, rgba(0,0,0,0.35) 0%, rgba(0,0,0,0.15) 40%, rgba(0,0,0,0.55) 100%),
+        url('https://images.unsplash.com/photo-1596436889106-be35e843f974?w=1800&q=80') center/cover no-repeat;
+      display: flex; flex-direction: column; align-items: center; justify-content: center;
+      text-align: center; padding: 2rem;
+      position: relative;
+    }
+    .hero-tag {
+      font-size: 0.72rem; letter-spacing: 0.3em; text-transform: uppercase;
+      color: var(--gold-light); margin-bottom: 1.2rem;
+      animation: fadeUp 0.8s both;
+    }
+    .hero-title {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(3rem, 7vw, 6rem);
+      font-weight: 300;
+      color: var(--white);
+      line-height: 1.07;
+      max-width: 820px;
+      animation: fadeUp 0.9s 0.15s both;
+    }
+    .hero-title em { font-style: italic; color: var(--gold-light); }
+    .hero-sub {
+      font-size: 1rem;
+      color: rgba(255,255,255,0.78);
+      max-width: 500px;
+      margin: 1.6rem auto 0;
+      line-height: 1.7;
+      animation: fadeUp 0.9s 0.3s both;
+    }
+    .hero-actions {
+      margin-top: 2.8rem;
+      display: flex; gap: 1rem; flex-wrap: wrap; justify-content: center;
+      animation: fadeUp 0.9s 0.45s both;
+    }
+    .btn-primary {
+      background: var(--gold);
+      color: var(--forest);
+      border: none;
+      padding: 0.95rem 2.4rem;
+      font-family: 'DM Sans', sans-serif;
+      font-size: 0.78rem;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      cursor: pointer;
+      border-radius: 2px;
+      text-decoration: none;
+      display: inline-block;
+      transition: background 0.2s, transform 0.2s;
+    }
+    .btn-primary:hover { background: var(--gold-light); transform: translateY(-2px); }
+    .btn-outline {
+      background: transparent;
+      color: var(--white);
+      border: 1px solid rgba(255,255,255,0.55);
+      padding: 0.95rem 2.4rem;
+      font-family: 'DM Sans', sans-serif;
+      font-size: 0.78rem;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      cursor: pointer;
+      border-radius: 2px;
+      text-decoration: none;
+      display: inline-block;
+      transition: border-color 0.2s, transform 0.2s;
+    }
+    .btn-outline:hover { border-color: var(--gold-light); color: var(--gold-light); transform: translateY(-2px); }
+    .scroll-hint {
+      position: absolute; bottom: 2.5rem;
+      display: flex; flex-direction: column; align-items: center; gap: 0.5rem;
+      color: rgba(255,255,255,0.5);
+      font-size: 0.68rem; letter-spacing: 0.25em; text-transform: uppercase;
+      animation: bounce 2s infinite;
+    }
+    .scroll-hint::after {
+      content: ''; display: block;
+      width: 1px; height: 48px;
+      background: linear-gradient(to bottom, rgba(255,255,255,0.4), transparent);
+    }
+
+    /* ── STRIP ── */
+    .strip {
+      background: var(--forest);
+      display: flex; flex-wrap: wrap;
+      justify-content: center; gap: 0;
+    }
+    .strip-item {
+      display: flex; align-items: center; gap: 0.8rem;
+      padding: 1.1rem 2.8rem;
+      border-right: 1px solid rgba(255,255,255,0.1);
+      color: rgba(255,255,255,0.75);
+      font-size: 0.78rem; letter-spacing: 0.1em;
+    }
+    .strip-item:last-child { border-right: none; }
+    .strip-item .icon { color: var(--gold); font-size: 1.1rem; }
+
+    /* ── SECTIONS ── */
+    section { padding: 7rem 4rem; }
+
+    .section-tag {
+      font-size: 0.7rem; letter-spacing: 0.3em; text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 0.8rem;
+    }
+    .section-title {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(2rem, 4vw, 3.2rem);
+      font-weight: 400;
+      line-height: 1.15;
+      color: var(--forest);
+    }
+    .section-title em { font-style: italic; }
+    .section-line {
+      width: 50px; height: 2px;
+      background: var(--gold);
+      margin: 1.4rem 0;
+    }
+    .section-body {
+      font-size: 0.95rem;
+      line-height: 1.85;
+      color: var(--mid);
+      max-width: 540px;
+    }
+
+    /* ── ABOUT ── */
+    #about {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 6rem;
+      align-items: center;
+      background: var(--white);
+    }
+    .about-imgs {
+      position: relative;
+      height: 560px;
+    }
+    .about-img-main {
+      position: absolute; top: 0; left: 0;
+      width: 75%; height: 85%;
+      object-fit: cover;
+      border-radius: 2px;
+    }
+    .about-img-accent {
+      position: absolute; bottom: 0; right: 0;
+      width: 55%; height: 55%;
+      object-fit: cover;
+      border-radius: 2px;
+      border: 6px solid var(--white);
+    }
+    .about-badge {
+      position: absolute; top: 50%; left: 50%; transform: translate(-50%,-50%);
+      background: var(--forest);
+      color: var(--gold);
+      width: 110px; height: 110px;
+      border-radius: 50%;
+      display: flex; flex-direction: column;
+      align-items: center; justify-content: center;
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1rem;
+      text-align: center;
+      line-height: 1.2;
+      z-index: 2;
+      border: 3px solid var(--gold);
+    }
+    .about-badge strong { font-size: 1.8rem; font-weight: 500; }
+    .stats-row {
+      display: flex; gap: 2.5rem; margin-top: 2.5rem;
+    }
+    .stat { border-left: 2px solid var(--gold); padding-left: 1.2rem; }
+    .stat-num {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 2.2rem;
+      font-weight: 400;
+      color: var(--forest);
+      line-height: 1;
+    }
+    .stat-label { font-size: 0.75rem; color: var(--mid); margin-top: 0.3rem; letter-spacing: 0.05em; }
+
+    /* ── ROOMS ── */
+    #rooms { background: var(--linen); }
+    .rooms-header { text-align: center; max-width: 600px; margin: 0 auto 4rem; }
+    .rooms-header .section-line { margin: 1.4rem auto; }
+    .rooms-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 2rem;
+    }
+    .room-card {
+      background: var(--white);
+      border-radius: 2px;
+      overflow: hidden;
+      transition: transform 0.3s, box-shadow 0.3s;
+    }
+    .room-card:hover { transform: translateY(-6px); box-shadow: 0 20px 50px rgba(0,0,0,0.12); }
+    .room-img {
+      width: 100%; height: 240px;
+      object-fit: cover;
+      display: block;
+    }
+    .room-info { padding: 1.8rem; }
+    .room-cat {
+      font-size: 0.68rem; letter-spacing: 0.25em; text-transform: uppercase;
+      color: var(--gold); margin-bottom: 0.5rem;
+    }
+    .room-name {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.5rem; font-weight: 500;
+      color: var(--forest); margin-bottom: 0.7rem;
+    }
+    .room-desc { font-size: 0.85rem; line-height: 1.7; color: var(--mid); margin-bottom: 1.3rem; }
+    .room-features {
+      display: flex; flex-wrap: wrap; gap: 0.5rem;
+      margin-bottom: 1.5rem;
+    }
+    .feat-pill {
+      background: var(--linen);
+      font-size: 0.7rem; letter-spacing: 0.08em;
+      color: var(--sage);
+      padding: 0.28rem 0.75rem;
+      border-radius: 20px;
+    }
+    .room-footer {
+      display: flex; align-items: center; justify-content: space-between;
+      border-top: 1px solid var(--linen);
+      padding-top: 1.2rem;
+    }
+    .room-price .amount {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.8rem; font-weight: 500;
+      color: var(--forest);
+    }
+    .room-price .per { font-size: 0.72rem; color: var(--mid); }
+    .btn-book {
+      background: var(--forest);
+      color: var(--gold);
+      border: none;
+      padding: 0.7rem 1.5rem;
+      font-size: 0.72rem; letter-spacing: 0.15em; text-transform: uppercase;
+      cursor: pointer;
+      border-radius: 2px;
+      transition: background 0.2s;
+    }
+    .btn-book:hover { background: var(--sage); }
+
+    /* ── CENTRE ── */
+    #centre { background: var(--forest); color: var(--white); }
+    #centre .section-title { color: var(--cream); }
+    #centre .section-body { color: rgba(255,255,255,0.7); max-width: 580px; }
+    .centre-layout {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 5rem;
+      align-items: start;
+    }
+    .programmes-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1.5rem;
+      margin-top: 3rem;
+    }
+    .prog-card {
+      background: rgba(255,255,255,0.06);
+      border: 1px solid rgba(255,255,255,0.1);
+      border-top: 3px solid var(--gold);
+      padding: 1.8rem;
+      border-radius: 2px;
+      transition: background 0.3s;
+    }
+    .prog-card:hover { background: rgba(255,255,255,0.1); }
+    .prog-icon { font-size: 1.8rem; margin-bottom: 1rem; }
+    .prog-name {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.15rem; font-weight: 500;
+      color: var(--gold-light);
+      margin-bottom: 0.6rem;
+    }
+    .prog-desc { font-size: 0.82rem; line-height: 1.7; color: rgba(255,255,255,0.6); }
+    .centre-right img {
+      width: 100%;
+      height: 480px;
+      object-fit: cover;
+      border-radius: 2px;
+      opacity: 0.85;
+    }
+    .centre-right { position: relative; }
+    .centre-quote {
+      position: absolute; bottom: -1.5rem; left: -1.5rem;
+      background: var(--gold);
+      color: var(--forest);
+      padding: 1.8rem;
+      max-width: 280px;
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.1rem;
+      font-style: italic;
+      line-height: 1.5;
+      font-weight: 500;
+    }
+
+    /* ── DINING ── */
+    #dining {
+      background: var(--white);
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 6rem;
+      align-items: center;
+    }
+    .dining-imgs {
+      position: relative; height: 500px;
+    }
+    .dining-imgs img:first-child {
+      position: absolute; top: 0; right: 0;
+      width: 70%; height: 80%;
+      object-fit: cover; border-radius: 2px;
+    }
+    .dining-imgs img:last-child {
+      position: absolute; bottom: 0; left: 0;
+      width: 50%; height: 50%;
+      object-fit: cover; border-radius: 2px;
+      border: 6px solid var(--white);
+    }
+    .amenities-list {
+      margin-top: 2rem;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1rem;
+    }
+    .amenity {
+      display: flex; align-items: center; gap: 0.8rem;
+      font-size: 0.85rem;
+      color: var(--charcoal);
+    }
+    .amenity::before {
+      content: '';
+      display: block;
+      width: 6px; height: 6px;
+      background: var(--gold);
+      border-radius: 50%;
+      flex-shrink: 0;
+    }
+
+    /* ── LOCATION ── */
+    #location {
+      background: var(--linen);
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 5rem;
+      align-items: center;
+    }
+    .loc-info { }
+    .loc-details { margin-top: 2rem; display: flex; flex-direction: column; gap: 1rem; }
+    .loc-detail {
+      display: flex; gap: 1rem;
+      padding: 1.2rem;
+      background: var(--white);
+      border-radius: 2px;
+      border-left: 3px solid var(--gold);
+    }
+    .loc-detail-icon { color: var(--gold); font-size: 1.2rem; flex-shrink: 0; margin-top: 0.1rem; }
+    .loc-detail-text h4 { font-size: 0.75rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--mid); margin-bottom: 0.3rem; }
+    .loc-detail-text p { font-size: 0.88rem; line-height: 1.5; color: var(--charcoal); }
+    .map-embed {
+      border-radius: 2px;
+      overflow: hidden;
+      height: 380px;
+    }
+    .map-embed iframe { width: 100%; height: 100%; border: none; }
+
+    /* ── BOOKING MODAL ── */
+    .modal-overlay {
+      display: none;
+      position: fixed; inset: 0; z-index: 999;
+      background: rgba(26,46,26,0.85);
+      backdrop-filter: blur(6px);
+      align-items: center; justify-content: center;
+    }
+    .modal-overlay.open { display: flex; }
+    .modal {
+      background: var(--white);
+      width: 90%; max-width: 600px;
+      max-height: 90vh;
+      overflow-y: auto;
+      border-radius: 3px;
+      animation: slideUp 0.35s both;
+    }
+    .modal-header {
+      background: var(--forest);
+      color: var(--white);
+      padding: 1.8rem 2.2rem;
+      display: flex; align-items: flex-start; justify-content: space-between;
+    }
+    .modal-header-text h3 {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.6rem; font-weight: 400;
+    }
+    .modal-header-text p { font-size: 0.8rem; color: rgba(255,255,255,0.6); margin-top: 0.3rem; }
+    .modal-close {
+      background: none; border: none;
+      color: rgba(255,255,255,0.6);
+      font-size: 1.5rem; cursor: pointer;
+      padding: 0; line-height: 1;
+      transition: color 0.2s;
+    }
+    .modal-close:hover { color: var(--white); }
+    .modal-body { padding: 2.2rem; }
+    .form-row {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1rem;
+    }
+    .form-group { margin-bottom: 1.2rem; }
+    .form-group label {
+      display: block;
+      font-size: 0.72rem; letter-spacing: 0.1em; text-transform: uppercase;
+      color: var(--mid); margin-bottom: 0.4rem;
+    }
+    .form-group input,
+    .form-group select,
+    .form-group textarea {
+      width: 100%;
+      border: 1px solid #ddd;
+      border-radius: 2px;
+      padding: 0.75rem 1rem;
+      font-family: 'DM Sans', sans-serif;
+      font-size: 0.88rem;
+      color: var(--charcoal);
+      background: var(--white);
+      transition: border-color 0.2s;
+    }
+    .form-group input:focus,
+    .form-group select:focus,
+    .form-group textarea:focus {
+      outline: none;
+      border-color: var(--gold);
+    }
+    .booking-summary {
+      background: var(--linen);
+      border-radius: 2px;
+      padding: 1.4rem;
+      margin-bottom: 1.5rem;
+    }
+    .booking-summary h4 {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.1rem; font-weight: 500;
+      color: var(--forest); margin-bottom: 1rem;
+    }
+    .summary-row {
+      display: flex; justify-content: space-between;
+      font-size: 0.83rem;
+      color: var(--mid);
+      padding: 0.4rem 0;
+      border-bottom: 1px solid rgba(0,0,0,0.06);
+    }
+    .summary-row:last-child { border-bottom: none; }
+    .summary-row.total {
+      font-weight: 500;
+      color: var(--forest);
+      font-size: 0.95rem;
+      padding-top: 0.8rem;
+    }
+    .btn-pay {
+      width: 100%;
+      background: var(--gold);
+      color: var(--forest);
+      border: none;
+      padding: 1.1rem;
+      font-family: 'DM Sans', sans-serif;
+      font-size: 0.82rem;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      font-weight: 500;
+      cursor: pointer;
+      border-radius: 2px;
+      display: flex; align-items: center; justify-content: center; gap: 0.7rem;
+      transition: background 0.2s;
+    }
+    .btn-pay:hover { background: var(--gold-light); }
+    .btn-pay:disabled { opacity: 0.5; cursor: not-allowed; }
+    .paystack-logo {
+      font-size: 0.7rem; letter-spacing: 0.12em; opacity: 0.6;
+    }
+
+    /* ── PROGRAMME BOOKING ── */
+    #programme-modal .modal-header { background: var(--sage); }
+
+    /* ── CONTACT ── */
+    #contact {
+      background: var(--forest);
+      text-align: center;
+      padding: 6rem 4rem;
+    }
+    #contact .section-tag { color: var(--gold-light); }
+    #contact .section-title { color: var(--cream); margin-bottom: 0.5rem; }
+    #contact .section-line { margin: 1.4rem auto; }
+    .contact-links {
+      display: flex; flex-wrap: wrap;
+      justify-content: center; gap: 2.5rem;
+      margin-top: 3rem;
+    }
+    .contact-link {
+      display: flex; flex-direction: column; align-items: center; gap: 0.5rem;
+      color: rgba(255,255,255,0.7);
+      text-decoration: none;
+      transition: color 0.2s;
+    }
+    .contact-link .cl-icon { font-size: 1.8rem; color: var(--gold); }
+    .contact-link .cl-label { font-size: 0.68rem; letter-spacing: 0.2em; text-transform: uppercase; }
+    .contact-link .cl-val { font-size: 0.9rem; }
+    .contact-link:hover { color: var(--gold-light); }
+    .contact-link:hover .cl-icon { color: var(--gold-light); }
+
+    /* ── FOOTER ── */
+    footer {
+      background: #111d11;
+      color: rgba(255,255,255,0.4);
+      text-align: center;
+      padding: 2rem;
+      font-size: 0.78rem;
+      line-height: 1.7;
+    }
+    footer a { color: var(--gold); text-decoration: none; }
+
+    /* ── TOAST ── */
+    .toast {
+      position: fixed; bottom: 2rem; right: 2rem;
+      background: var(--sage);
+      color: var(--white);
+      padding: 1rem 1.8rem;
+      border-radius: 3px;
+      font-size: 0.88rem;
+      z-index: 9999;
+      transform: translateY(6rem);
+      transition: transform 0.4s;
+      box-shadow: 0 8px 24px rgba(0,0,0,0.2);
+    }
+    .toast.show { transform: translateY(0); }
+
+    /* ── ANIMATIONS ── */
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(22px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+    @keyframes bounce {
+      0%, 100% { transform: translateY(0); }
+      50%  { transform: translateY(6px); }
+    }
+    @keyframes slideUp {
+      from { opacity: 0; transform: translateY(28px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+
+    /* ── RESPONSIVE ── */
+    @media (max-width: 900px) {
+      nav { padding: 1.2rem 1.5rem; }
+      .nav-links { display: none; }
+      .nav-links.open {
+        display: flex; flex-direction: column;
+        position: fixed; top: 0; left: 0; right: 0; bottom: 0;
+        background: var(--forest);
+        align-items: center; justify-content: center;
+        gap: 2rem; z-index: 99;
+      }
+      .nav-links.open a { font-size: 1.2rem; }
+      .hamburger { display: flex; z-index: 200; }
+      section { padding: 5rem 1.5rem; }
+      #about, #dining, #location { grid-template-columns: 1fr; gap: 3rem; }
+      .about-imgs, .dining-imgs { height: 380px; }
+      .centre-layout { grid-template-columns: 1fr; gap: 3rem; }
+      .programmes-grid { grid-template-columns: 1fr; }
+      .centre-quote { position: static; margin-top: 1rem; max-width: 100%; }
+      .form-row { grid-template-columns: 1fr; }
+      .strip-item { padding: 0.9rem 1.5rem; }
+      #contact { padding: 5rem 1.5rem; }
+    }
+  </style>
+</head>
+
+<body>
+
+<!-- ╔═══════════════════════════════╗ -->
+<!--           NAVIGATION            -->
+<!-- ╚═══════════════════════════════╝ -->
+<nav id="navbar">
+  <a href="#hero" class="nav-logo">Palena <span>Gardens</span></a>
+  <ul class="nav-links" id="navLinks">
+    <li><a href="#about">About</a></li>
+    <li><a href="#rooms">Rooms</a></li>
+    <li><a href="#centre">Leadership Centre</a></li>
+    <li><a href="#dining">Dining</a></li>
+    <li><a href="#location">Location</a></li>
+    <li><a href="#rooms" class="nav-cta">Book Now</a></li>
+  </ul>
+  <div class="hamburger" id="hamburger" onclick="toggleMenu()">
+    <span></span><span></span><span></span>
+  </div>
+</nav>
+
+<!-- ╔═══════════════════════════════╗ -->
+<!--              HERO               -->
+<!-- ╚═══════════════════════════════╝ -->
+<section id="hero">
+  <p class="hero-tag">Takoradi, Ghana &nbsp;·&nbsp; Where Nature Meets Transformation</p>
+  <h1 class="hero-title">
+    A Sanctuary for <em>Rest, Growth</em><br/>& Inspired Leadership
+  </h1>
+  <p class="hero-sub">
+    Palena Gardens is Takoradi's premier boutique hotel and Centre for Leadership, Wellbeing & Culture — where executive hospitality and transformative programmes converge.
+  </p>
+  <div class="hero-actions">
+    <a href="#rooms" class="btn-primary">Reserve a Room</a>
+    <a href="#centre" class="btn-outline">Explore the Centre</a>
+  </div>
+  <div class="scroll-hint">Discover</div>
+</section>
+
+<!-- ╔═══════════════════════════════╗ -->
+<!--            QUICK STRIP          -->
+<!-- ╚═══════════════════════════════╝ -->
+<div class="strip">
+  <div class="strip-item"><span class="icon">🌿</span> Lush Garden Setting</div>
+  <div class="strip-item"><span class="icon">🍳</span> Free English Breakfast</div>
+  <div class="strip-item"><span class="icon">🛜</span> Complimentary WiFi</div>
+  <div class="strip-item"><span class="icon">🚗</span> Free Parking</div>
+  <div class="strip-item"><span class="icon">🕐</span> 24-hr Room Service</div>
+  <div class="strip-item"><span class="icon">🏛</span> Leadership Programmes</div>
+</div>
+
+<!-- ╔═══════════════════════════════╗ -->
+<!--             ABOUT               -->
+<!-- ╚═══════════════════════════════╝ -->
+<section id="about">
+  <div class="about-imgs reveal">
+    <img src="https://images.unsplash.com/photo-1551882547-ff40c63fe5fa?w=800&q=80" alt="Palena Gardens exterior" class="about-img-main"/>
+    <img src="https://images.unsplash.com/photo-1566073771259-6a8506099945?w=600&q=80" alt="Garden view" class="about-img-accent"/>
+    <div class="about-badge"><strong>3.5</strong>Star<br/>Hotel</div>
+  </div>
+  <div class="about-content reveal">
+    <p class="section-tag">Our Story</p>
+    <h2 class="section-title">Where Leadership Meets <em>Serenity</em></h2>
+    <div class="section-line"></div>
+    <p class="section-body">
+      Nestled in the heart of New Takoradi at 2 Sir Charles Bucknor Street, Palena Gardens is more than a hotel — it is a living estate dedicated to the flourishing of individuals, teams, and organisations. Our seven elegantly appointed rooms sit alongside one of Takoradi's finest garden grounds, offering an environment of quiet beauty and restorative calm.
+    </p>
+    <p class="section-body" style="margin-top:1rem;">
+      Through our Centre for Leadership, Wellbeing & Culture, we host executive retreats, coaching intensives, and cultural immersion programmes that help leaders and organisations discover their truest potential — rooted in African values and global best practice.
+    </p>
+    <div class="stats-row">
+      <div class="stat">
+        <div class="stat-num">7</div>
+        <div class="stat-label">Boutique Rooms</div>
+      </div>
+      <div class="stat">
+        <div class="stat-num">4★</div>
+        <div class="stat-label">Guest-Rated</div>
+      </div>
+      <div class="stat">
+        <div class="stat-num">3+</div>
+        <div class="stat-label">Programme Tracks</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ╔═══════════════════════════════╗ -->
+<!--             ROOMS               -->
+<!-- ╚═══════════════════════════════╝ -->
+<section id="rooms">
+  <div class="rooms-header reveal">
+    <p class="section-tag">Accommodation</p>
+    <h2 class="section-title">Rooms <em>Crafted</em> for Comfort</h2>
+    <div class="section-line"></div>
+    <p class="section-body" style="margin:0 auto;">
+      Each of our seven air-conditioned rooms is appointed with premium amenities, rainfall showers, and views of our lush gardens — with complimentary breakfast served every morning.
+    </p>
+  </div>
+  <div class="rooms-grid">
+
+    <div class="room-card reveal">
+      <img src="https://images.unsplash.com/photo-1631049307264-da0ec9d70304?w=700&q=80" alt="Garden View Room" class="room-img"/>
+      <div class="room-info">
+        <p class="room-cat">Standard</p>
+        <h3 class="room-name">Garden View Room</h3>
+        <p class="room-desc">A serene retreat with direct views of our tropical garden. Air-conditioned, with a minibar, flat-screen TV, and rainfall shower.</p>
+        <div class="room-features">
+          <span class="feat-pill">Free WiFi</span>
+          <span class="feat-pill">Minibar</span>
+          <span class="feat-pill">Flat-Screen TV</span>
+          <span class="feat-pill">Rainfall Shower</span>
+        </div>
+        <div class="room-footer">
+          <div class="room-price">
+            <div class="amount">GHS 850</div>
+            <div class="per">per night · incl. breakfast</div>
+          </div>
+          <button class="btn-book" onclick="openBooking('Garden View Room', 850)">Book</button>
+        </div>
+      </div>
+    </div>
+
+    <div class="room-card reveal">
+      <img src="https://images.unsplash.com/photo-1618773928121-c32242e63f39?w=700&q=80" alt="Executive Room" class="room-img"/>
+      <div class="room-info">
+        <p class="room-cat">Executive</p>
+        <h3 class="room-name">Executive Room</h3>
+        <p class="room-desc">Elevated comfort for the business traveller. Larger workspace, premium toiletries, satellite channels, and daily housekeeping.</p>
+        <div class="room-features">
+          <span class="feat-pill">Work Desk</span>
+          <span class="feat-pill">Satellite TV</span>
+          <span class="feat-pill">24hr Room Service</span>
+          <span class="feat-pill">Toiletries</span>
+        </div>
+        <div class="room-footer">
+          <div class="room-price">
+            <div class="amount">GHS 1,150</div>
+            <div class="per">per night · incl. breakfast</div>
+          </div>
+          <button class="btn-book" onclick="openBooking('Executive Room', 1150)">Book</button>
+        </div>
+      </div>
+    </div>
+    <div class="room-card reveal">
+      <img src="https://images.unsplash.com/photo-1618773928121-c32242e63f39?w=700&q=80" alt="Executive Room" class="room-img"/>
+      <div class="room-info">
+        <p class="room-cat">Executive</p>
+        <h3 class="room-name">Executive Room</h3>
+        <p class="room-desc">Elevated comfort for the business traveller. Larger workspace, premium toiletries, satellite channels, and daily housekeeping.</p>
+        <div class="room-features">
+          <span class="feat-pill">Work Desk</span>
+          <span class="feat-pill">Satellite TV</span>
+          <span class="feat-pill">24hr Room Service</span>
+          <span class="feat-pill">Toiletries</span>
+        </div>
+        <div class="room-footer">
+          <div class="room-price">
+            <div class="amount">GHS 1,150</div>
+            <div class="per">per night · incl. breakfast</div>
+          </div>
+          <button class="btn-book" onclick="openBooking('Executive Room', 1150)">Book</button>
+        </div>
+      </div>
+    </div>
+    <div class="room-card reveal">
+      <img src="https://images.unsplash.com/photo-1590490360182-c33d57733427?w=700&q=80" alt="Garden Suite" class="room-img"/>
+      <div class="room-info">
+        <p class="room-cat">Suite</p>
+        <h3 class="room-name">Palena Garden Suite</h3>
+        <p class="room-desc">Our finest offering — a full suite with a private sitting area, premium minibar, and a panoramic garden terrace. Perfect for retreats and celebrations.</p>
+        <div class="room-features">
+          <span class="feat-pill">Private Terrace</span>
+          <span class="feat-pill">Sitting Area</span>
+          <span class="feat-pill">Premium Minibar</span>
+          <span class="feat-pill">Iron & Board</span>
+        </div>
+        <div class="room-footer">
+          <div class="room-price">
+            <div class="amount">GHS 1,800</div>
+            <div class="per">per night · incl. breakfast</div>
+          </div>
+          <button class="btn-book" onclick="openBooking('Palena Garden Suite', 1800)">Book</button>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- ╔═══════════════════════════════╗ -->
+<!--     CENTRE FOR LEADERSHIP       -->
+<!-- ╚═══════════════════════════════╝ -->
+<section id="centre">
+  <div class="centre-layout">
+    <div class="centre-left reveal">
+      <p class="section-tag">Centre for Leadership, Wellbeing & Culture</p>
+      <h2 class="section-title" style="color:var(--cream);">Where <em>Leaders</em> Are Shaped</h2>
+      <div class="section-line"></div>
+      <p class="section-body">
+        Our Centre offers a unique ecosystem for leaders, organisations, and communities to explore, grow, and transform. Grounded in the cultural richness of Ghana's Western Region, our programmes blend global leadership frameworks with deep human wisdom.
+      </p>
+      <p class="section-body" style="margin-top:1rem;">
+        Whether you're seeking an executive retreat, leadership coaching, a team offsite, or cultural immersion — Palena Gardens provides the space, expertise, and inspiration.
+      </p>
+      <div class="programmes-grid">
+        <div class="prog-card">
+          <div class="prog-icon">🧭</div>
+          <div class="prog-name">Leadership Retreats</div>
+          <p class="prog-desc">Immersive multi-day programmes for senior leaders and executives. Strategy, self-leadership, and renewal.</p>
+        </div>
+        <div class="prog-card">
+          <div class="prog-icon">🌿</div>
+          <div class="prog-name">Wellbeing Intensives</div>
+          <p class="prog-desc">Evidence-based practices for mind-body-spirit wellness. Burnout recovery, resilience, and sustainable performance.</p>
+        </div>
+        <div class="prog-card">
+          <div class="prog-icon">🥁</div>
+          <div class="prog-name">Culture & Identity</div>
+          <p class="prog-desc">Rooted in Ghanaian heritage. Programmes exploring African leadership philosophy, cultural intelligence, and belonging.</p>
+        </div>
+        <div class="prog-card">
+          <div class="prog-icon">🤝</div>
+          <div class="prog-name">Team Offsites</div>
+          <p class="prog-desc">Facilitated team retreats for strategy alignment, culture building, and collective breakthrough.</p>
+        </div>
+      </div>
+      <div style="margin-top:2.5rem;">
+        <button class="btn-primary" onclick="openProgramme()">Enquire About a Programme</button>
+      </div>
+    </div>
+    <div class="centre-right reveal">
+      <img src="https://images.unsplash.com/photo-1552664730-d307ca884978?w=800&q=80" alt="Leadership programme session"/>
+      <div class="centre-quote">
+        "The ground beneath great leadership is always human — always rooted."
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ╔═══════════════════════════════╗ -->
+<!--          DINING & AMENITIES     -->
+<!-- ╚═══════════════════════════════╝ -->
+<section id="dining">
+  <div class="dining-content reveal">
+    <p class="section-tag">Dining & Amenities</p>
+    <h2 class="section-title">Nourishment for <em>Body & Soul</em></h2>
+    <div class="section-line"></div>
+    <p class="section-body">
+      Begin each day with a complimentary English breakfast served from 8:00–11:00 AM. Our on-site restaurant offers lunch and dinner, while the bar and lounge provides a refined space for evening drinks and conversation.
+    </p>
+    <div class="amenities-list">
+      <div class="amenity">Restaurant on site</div>
+      <div class="amenity">Bar & Lounge</div>
+      <div class="amenity">Free English Breakfast</div>
+      <div class="amenity">24-hour Room Service</div>
+      <div class="amenity">Lush Garden Grounds</div>
+      <div class="amenity">Laundry Facilities</div>
+      <div class="amenity">Luggage Storage</div>
+      <div class="amenity">Safe-Deposit Box</div>
+      <div class="amenity">24-hr Front Desk</div>
+      <div class="amenity">Free Parking</div>
+      <div class="amenity">Event & Meeting Space</div>
+      <div class="amenity">Enhanced Sanitation</div>
+    </div>
+  </div>
+  <div class="dining-imgs reveal">
+    <img src="https://images.unsplash.com/photo-1414235077428-338989a2e8c0?w=700&q=80" alt="Restaurant dining"/>
+    <img src="https://images.unsplash.com/photo-1513558161293-cdaf765ed2fd?w=500&q=80" alt="Hotel bar"/>
+  </div>
+</section>
+
+<!-- ╔═══════════════════════════════╗ -->
+<!--            LOCATION             -->
+<!-- ╚═══════════════════════════════╝ -->
+<section id="location">
+  <div class="loc-info reveal">
+    <p class="section-tag">Find Us</p>
+    <h2 class="section-title">In the Heart of <em>Takoradi</em></h2>
+    <div class="section-line"></div>
+    <div class="loc-details">
+      <div class="loc-detail">
+        <span class="loc-detail-icon">📍</span>
+        <div class="loc-detail-text">
+          <h4>Address</h4>
+          <p>2 Sir Charles Bucknor Street<br/>New Takoradi, Sekondi-Takoradi<br/>Western Region, Ghana</p>
+        </div>
+      </div>
+      <div class="loc-detail">
+        <span class="loc-detail-icon">✈️</span>
+        <div class="loc-detail-text">
+          <h4>Nearest Airport</h4>
+          <p>Sekondi-Takoradi Airport (TKD)<br/>~6 km · 18 min drive</p>
+        </div>
+      </div>
+      <div class="loc-detail">
+        <span class="loc-detail-icon">🏛</span>
+        <div class="loc-detail-text">
+          <h4>Nearby Attractions</h4>
+          <p>Bisa Aberwa Museum · Market Circle<br/>Fort San Sebastian · B' Family Beach</p>
+        </div>
+      </div>
+      <div class="loc-detail">
+        <span class="loc-detail-icon">🕐</span>
+        <div class="loc-detail-text">
+          <h4>Check-in / Check-out</h4>
+          <p>Check-in: 2:00 PM &nbsp;|&nbsp; Check-out: 12:00 PM<br/>24-hour front desk available</p>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="map-embed reveal">
+    <iframe
+      src="https://maps.google.com/maps?q=Palena+Gardens+Hotel,+Takoradi,+Ghana&output=embed"
+      allowfullscreen loading="lazy"
+      referrerpolicy="no-referrer-when-downgrade">
+    </iframe>
+  </div>
+</section>
+
+<!-- ╔═══════════════════════════════╗ -->
+<!--            CONTACT              -->
+<!-- ╚═══════════════════════════════╝ -->
+<section id="contact">
+  <p class="section-tag">Contact & Reservations</p>
+  <h2 class="section-title" style="color:var(--cream);">Get in <em>Touch</em></h2>
+  <div class="section-line" style="margin:1.4rem auto;"></div>
+  <p style="color:rgba(255,255,255,0.6);max-width:500px;margin:0 auto;font-size:0.9rem;line-height:1.7;">
+    Our team is available around the clock to assist with bookings, event enquiries, and programme information.
+  </p>
+  <div class="contact-links">
+    <a class="contact-link" href="tel:+233551590180">
+      <span class="cl-icon">📞</span>
+      <span class="cl-label">Telephone</span>
+      <span class="cl-val">+233 55 159 0180</span>
+    </a>
+    <a class="contact-link" href="mailto:info@palenagardens.com">
+      <span class="cl-icon">✉️</span>
+      <span class="cl-label">Email</span>
+      <span class="cl-val">info@palenagardens.com</span>
+    </a>
+    <a class="contact-link" href="https://wa.me/233551590180">
+      <span class="cl-icon">💬</span>
+      <span class="cl-label">WhatsApp</span>
+      <span class="cl-val">+233 55 159 0180</span>
+    </a>
+    <a class="contact-link" href="https://web.facebook.com/palenagardens/#" target="_blank">
+      <span class="cl-icon">🌐</span>
+      <span class="cl-label">Facebook</span>
+      <span class="cl-val">@palenagardens</span>
+    </a>
+  </div>
+</section>
+
+<!-- ╔═══════════════════════════════╗ -->
+<!--             FOOTER              -->
+<!-- ╚═══════════════════════════════╝ -->
+<footer>
+  <p style="font-family:'Cormorant Garamond',serif;font-size:1.1rem;color:rgba(255,255,255,0.6);margin-bottom:0.5rem;">
+    Palena <span style="color:var(--gold)">Gardens</span>
+  </p>
+  <p>2 Sir Charles Bucknor Street, New Takoradi, Ghana &nbsp;·&nbsp; All rights reserved © 2025</p>
+  <p style="margin-top:0.4rem;">
+    Hotel &amp; Centre for Leadership, Wellbeing &amp; Culture &nbsp;·&nbsp;
+    <a href="mailto:info@palenagardens.com">info@palenagardens.com</a>
+  </p>
+</footer>
+
+<!-- ╔═══════════════════════════════╗ -->
+<!--         BOOKING MODAL           -->
+<!-- ╚═══════════════════════════════╝ -->
+<div class="modal-overlay" id="bookingModal">
+  <div class="modal">
+    <div class="modal-header">
+      <div class="modal-header-text">
+        <h3>Reserve Your Room</h3>
+        <p id="selectedRoomLabel">Garden View Room</p>
+      </div>
+      <button class="modal-close" onclick="closeBooking()">✕</button>
+    </div>
+    <div class="modal-body">
+      <div class="form-row">
+        <div class="form-group">
+          <label>First Name</label>
+          <input type="text" id="firstName" placeholder="Kwame"/>
+        </div>
+        <div class="form-group">
+          <label>Last Name</label>
+          <input type="text" id="lastName" placeholder="Mensah"/>
+        </div>
+      </div>
+      <div class="form-group">
+        <label>Email Address</label>
+        <input type="email" id="guestEmail" placeholder="kwame@example.com"/>
+      </div>
+      <div class="form-group">
+        <label>Phone Number</label>
+        <input type="tel" id="guestPhone" placeholder="+233 24 000 0000"/>
+      </div>
+      <div class="form-row">
+        <div class="form-group">
+          <label>Check-In Date</label>
+          <input type="date" id="checkIn"/>
+        </div>
+        <div class="form-group">
+          <label>Check-Out Date</label>
+          <input type="date" id="checkOut"/>
+        </div>
+      </div>
+      <div class="form-group">
+        <label>Guests</label>
+        <select id="guests">
+          <option value="1">1 Guest</option>
+          <option value="2" selected>2 Guests</option>
+          <option value="3">3 Guests</option>
+        </select>
+      </div>
+      <div class="form-group">
+        <label>Special Requests (optional)</label>
+        <textarea id="requests" rows="2" placeholder="Dietary requirements, special occasion, etc."></textarea>
+      </div>
+
+      <div class="booking-summary" id="bookingSummary">
+        <h4>Booking Summary</h4>
+        <div class="summary-row"><span>Room</span><span id="sumRoom">—</span></div>
+        <div class="summary-row"><span>Check-In</span><span id="sumIn">—</span></div>
+        <div class="summary-row"><span>Check-Out</span><span id="sumOut">—</span></div>
+        <div class="summary-row"><span>Nights</span><span id="sumNights">—</span></div>
+        <div class="summary-row"><span>Rate per Night</span><span id="sumRate">—</span></div>
+        <div class="summary-row total"><span>Total (GHS)</span><span id="sumTotal">—</span></div>
+      </div>
+
+      <button class="btn-pay" id="payBtn" onclick="payWithPaystack()">
+        <span>Pay with Paystack</span>
+        <span class="paystack-logo">SECURE PAYMENT</span>
+      </button>
+      <p style="text-align:center;font-size:0.72rem;color:var(--mid);margin-top:0.8rem;">
+        🔒 Your payment is secured by Paystack. Card, Mobile Money & Bank Transfer accepted.
+      </p>
+    </div>
+  </div>
+</div>
+
+<!-- ╔═══════════════════════════════╗ -->
+<!--       PROGRAMME ENQUIRY MODAL   -->
+<!-- ╚═══════════════════════════════╝ -->
+<div class="modal-overlay" id="programmeModal">
+  <div class="modal" id="programme-modal">
+    <div class="modal-header" style="background:var(--sage);">
+      <div class="modal-header-text">
+        <h3>Programme Enquiry</h3>
+        <p>Centre for Leadership, Wellbeing & Culture</p>
+      </div>
+      <button class="modal-close" onclick="closeProgramme()">✕</button>
+    </div>
+    <div class="modal-body">
+      <div class="form-row">
+        <div class="form-group">
+          <label>Your Name</label>
+          <input type="text" id="pName" placeholder="Full Name"/>
+        </div>
+        <div class="form-group">
+          <label>Organisation</label>
+          <input type="text" id="pOrg" placeholder="Company / Institution"/>
+        </div>
+      </div>
+      <div class="form-group">
+        <label>Email Address</label>
+        <input type="email" id="pEmail" placeholder="you@organisation.com"/>
+      </div>
+      <div class="form-group">
+        <label>Programme of Interest</label>
+        <select id="pProg">
+          <option>Leadership Retreat</option>
+          <option>Wellbeing Intensive</option>
+          <option>Culture & Identity Programme</option>
+          <option>Team Offsite</option>
+          <option>Custom / Other</option>
+        </select>
+      </div>
+      <div class="form-row">
+        <div class="form-group">
+          <label>Preferred Dates</label>
+          <input type="date" id="pDate"/>
+        </div>
+        <div class="form-group">
+          <label>Number of Participants</label>
+          <input type="number" id="pPax" placeholder="e.g. 12" min="1"/>
+        </div>
+      </div>
+      <div class="form-group">
+        <label>Tell Us More</label>
+        <textarea id="pMessage" rows="3" placeholder="Brief description of your goals and needs..."></textarea>
+      </div>
+
+      <div class="booking-summary">
+        <h4>Programme Deposit</h4>
+        <div class="summary-row"><span>Enquiry & Confirmation Deposit</span><span>GHS 500</span></div>
+        <div class="summary-row total"><span>To Pay Now</span><span>GHS 500</span></div>
+      </div>
+
+      <button class="btn-pay" onclick="payProgrammeDeposit()" style="background:var(--sage);">
+        <span>Pay GHS 500 Deposit via Paystack</span>
+        <span class="paystack-logo">SECURE</span>
+      </button>
+      <p style="text-align:center;font-size:0.72rem;color:var(--mid);margin-top:0.8rem;">
+        A programme coordinator will contact you within 24 hours after deposit.
+      </p>
+    </div>
+  </div>
+</div>
+
+<!-- ── TOAST ── -->
+<div class="toast" id="toast"></div>
+
+<script>
+  /* ── NAV SCROLL ── */
+  const nav = document.getElementById('navbar');
+  window.addEventListener('scroll', () => {
+    nav.classList.toggle('scrolled', window.scrollY > 60);
+  });
+
+  /* ── MOBILE MENU ── */
+  function toggleMenu() {
+    document.getElementById('navLinks').classList.toggle('open');
+  }
+  document.getElementById('navLinks').querySelectorAll('a').forEach(a => {
+    a.addEventListener('click', () => document.getElementById('navLinks').classList.remove('open'));
+  });
+
+  /* ── SCROLL REVEAL ── */
+  const reveals = document.querySelectorAll('.reveal');
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(e => {
+      if (e.isIntersecting) {
+        e.target.style.opacity = '1';
+        e.target.style.transform = 'translateY(0)';
+      }
+    });
+  }, { threshold: 0.12 });
+  reveals.forEach(el => {
+    el.style.opacity = '0';
+    el.style.transform = 'translateY(30px)';
+    el.style.transition = 'opacity 0.7s ease, transform 0.7s ease';
+    observer.observe(el);
+  });
+
+  /* ── MIN DATES ── */
+  const today = new Date().toISOString().split('T')[0];
+  document.getElementById('checkIn').min = today;
+  document.getElementById('checkOut').min = today;
+  document.getElementById('pDate').min = today;
+
+  /* ── BOOKING STATE ── */
+  let selectedRoom = '';
+  let selectedRate = 0;
+
+  function openBooking(room, rate) {
+    selectedRoom = room;
+    selectedRate = rate;
+    document.getElementById('selectedRoomLabel').textContent = room;
+    document.getElementById('sumRoom').textContent = room;
+    document.getElementById('sumRate').textContent = 'GHS ' + rate.toLocaleString();
+    document.getElementById('sumIn').textContent = '—';
+    document.getElementById('sumOut').textContent = '—';
+    document.getElementById('sumNights').textContent = '—';
+    document.getElementById('sumTotal').textContent = '—';
+    document.getElementById('bookingModal').classList.add('open');
+    document.body.style.overflow = 'hidden';
+  }
+  function closeBooking() {
+    document.getElementById('bookingModal').classList.remove('open');
+    document.body.style.overflow = '';
+  }
+  function openProgramme() {
+    document.getElementById('programmeModal').classList.add('open');
+    document.body.style.overflow = 'hidden';
+  }
+  function closeProgramme() {
+    document.getElementById('programmeModal').classList.remove('open');
+    document.body.style.overflow = '';
+  }
+
+  /* ── UPDATE SUMMARY ON DATE CHANGE ── */
+  ['checkIn','checkOut'].forEach(id => {
+    document.getElementById(id).addEventListener('change', updateSummary);
+  });
+  function updateSummary() {
+    const inVal = document.getElementById('checkIn').value;
+    const outVal = document.getElementById('checkOut').value;
+    if (!inVal || !outVal) return;
+    const d1 = new Date(inVal), d2 = new Date(outVal);
+    if (d2 <= d1) {
+      showToast('Check-out must be after check-in.');
+      return;
+    }
+    const nights = Math.round((d2 - d1) / 86400000);
+    const total = nights * selectedRate;
+    document.getElementById('sumIn').textContent = d1.toDateString();
+    document.getElementById('sumOut').textContent = d2.toDateString();
+    document.getElementById('sumNights').textContent = nights;
+    document.getElementById('sumTotal').textContent = 'GHS ' + total.toLocaleString();
+  }
+
+  /* ── PAYSTACK: ROOM BOOKING ── */
+  function payWithPaystack() {
+    const firstName = document.getElementById('firstName').value.trim();
+    const lastName  = document.getElementById('lastName').value.trim();
+    const email     = document.getElementById('guestEmail').value.trim();
+    const phone     = document.getElementById('guestPhone').value.trim();
+    const checkIn   = document.getElementById('checkIn').value;
+    const checkOut  = document.getElementById('checkOut').value;
+
+    if (!firstName || !lastName || !email || !checkIn || !checkOut) {
+      showToast('Please fill in all required fields.');
+      return;
+    }
+    if (!/\S+@\S+\.\S+/.test(email)) {
+      showToast('Please enter a valid email address.');
+      return;
+    }
+    const d1 = new Date(checkIn), d2 = new Date(checkOut);
+    if (d2 <= d1) { showToast('Invalid dates.'); return; }
+
+    const nights = Math.round((d2 - d1) / 86400000);
+    const totalGHS = nights * selectedRate;
+    const amountKobo = totalGHS * 100; // Paystack uses lowest currency unit (pesewas for GHS)
+
+    const handler = PaystackPop.setup({
+      // ⚠️ REPLACE WITH YOUR LIVE PAYSTACK PUBLIC KEY
+      key: 'pk_test_xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx',
+      email: email,
+      amount: amountKobo,
+      currency: 'GHS',
+      ref: 'PG-' + Math.floor(Math.random() * 1e9),
+      metadata: {
+        custom_fields: [
+          { display_name: 'Guest Name',  variable_name: 'name',      value: firstName + ' ' + lastName },
+          { display_name: 'Room',        variable_name: 'room',      value: selectedRoom },
+          { display_name: 'Check-In',   variable_name: 'check_in',  value: checkIn },
+          { display_name: 'Check-Out',  variable_name: 'check_out', value: checkOut },
+          { display_name: 'Nights',      variable_name: 'nights',    value: nights },
+          { display_name: 'Phone',       variable_name: 'phone',     value: phone },
+        ]
+      },
+      callback: function(response) {
+        closeBooking();
+        showToast('✅ Booking confirmed! Ref: ' + response.reference);
+        // In production: send response.reference to your backend for verification
+        console.log('Payment reference:', response.reference);
+      },
+      onClose: function() {
+        showToast('Payment cancelled.');
+      }
+    });
+    handler.openIframe();
+  }
+
+  /* ── PAYSTACK: PROGRAMME DEPOSIT ── */
+  function payProgrammeDeposit() {
+    const name  = document.getElementById('pName').value.trim();
+    const email = document.getElementById('pEmail').value.trim();
+    const org   = document.getElementById('pOrg').value.trim();
+    const prog  = document.getElementById('pProg').value;
+
+    if (!name || !email) {
+      showToast('Please fill in your name and email.');
+      return;
+    }
+    if (!/\S+@\S+\.\S+/.test(email)) {
+      showToast('Please enter a valid email address.');
+      return;
+    }
+
+    const handler = PaystackPop.setup({
+      // ⚠️ REPLACE WITH YOUR LIVE PAYSTACK PUBLIC KEY
+      key: 'pk_test_xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx',
+      email: email,
+      amount: 50000, // GHS 500 in pesewas
+      currency: 'GHS',
+      ref: 'PG-PROG-' + Math.floor(Math.random() * 1e9),
+      metadata: {
+        custom_fields: [
+          { display_name: 'Participant Name', variable_name: 'name', value: name },
+          { display_name: 'Organisation',     variable_name: 'org',  value: org },
+          { display_name: 'Programme',        variable_name: 'prog', value: prog },
+        ]
+      },
+      callback: function(response) {
+        closeProgramme();
+        showToast('✅ Programme deposit received! A coordinator will contact you shortly. Ref: ' + response.reference);
+        console.log('Programme deposit ref:', response.reference);
+      },
+      onClose: function() {
+        showToast('Payment cancelled.');
+      }
+    });
+    handler.openIframe();
+  }
+
+  /* ── TOAST ── */
+  let toastTimer;
+  function showToast(msg) {
+    const t = document.getElementById('toast');
+    t.textContent = msg;
+    t.classList.add('show');
+    clearTimeout(toastTimer);
+    toastTimer = setTimeout(() => t.classList.remove('show'), 4000);
+  }
+
+  /* ── CLOSE ON OVERLAY CLICK ── */
+  document.getElementById('bookingModal').addEventListener('click', function(e) {
+    if (e.target === this) closeBooking();
+  });
+  document.getElementById('programmeModal').addEventListener('click', function(e) {
+    if (e.target === this) closeProgramme();
+  });
+</script>
+</body>
+</html>
