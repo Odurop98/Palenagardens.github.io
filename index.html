@@ -235,19 +235,13 @@
       border: 6px solid var(--white);
     }
     .about-badge {
-      position: absolute; top: 50%; left: 50%; transform: translate(-50%,-50%);
-      background: var(--forest);
-      color: var(--gold);
-      width: 110px; height: 110px;
-      border-radius: 50%;
-      display: flex; flex-direction: column;
-      align-items: center; justify-content: center;
-      font-family: 'Cormorant Garamond', serif;
-      font-size: 1rem;
-      text-align: center;
-      line-height: 1.2;
-      z-index: 2;
-      border: 3px solid var(--gold);
+  position: absolute; top: 50%; left: 50%; transform: translate(-50%,-50%);
+  width: 110px; height: 110px;
+  border-radius: 50%;
+  overflow: hidden;
+  border: 3px solid var(--gold);
+  z-index: 2;
+}
     }
     .about-badge strong { font-size: 1.8rem; font-weight: 500; }
     .stats-row {
@@ -719,7 +713,10 @@
   <div class="about-imgs reveal">
      <img src="https://raw.githubusercontent.com/Odurop98/Hotel-Images/main/hotel/home.jpeg" alt="Palena Gardens exterior" class="about-img-main"/>
      <img src="https://raw.githubusercontent.com/Odurop98/Hotel-Images/main/hotel/center2.webp" alt="Garden view" class="about-img-accent"/>
-    <div class="about-badge"><img src="https://raw.githubusercontent.com/Odurop98/Hotel-Images/main/hotel/logo%20copy.jpg"></div>
+    <div class="about-badge">
+  <img src="https://raw.githubusercontent.com/Odurop98/Hotel-Images/main/hotel/logo%20copy.jpg" 
+       style="width:100%; height:100%; object-fit:cover; border-radius:50%;"/>
+</div>
   </div>
   <div class="about-content reveal">
     <p class="section-tag">Our Story</p>
