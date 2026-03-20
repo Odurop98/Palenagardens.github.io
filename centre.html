@@ -1,0 +1,1077 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>The Centre — Windy Ridge · Palena Gardens</title>
+  <meta name="description" content="Palena Gardens Windy Ridge — Centre for Leadership, Wellbeing & Culture. 142 Broadleaf Street, Takoradi. Organizational Consultancy, Group Relations, Executive Coaching."/>
+  <link rel="preconnect" href="https://fonts.googleapis.com"/>
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&family=DM+Sans:ital,wght@0,300;0,400;0,500;1,300&display=swap" rel="stylesheet"/>
+
+  <style>
+    :root {
+      --ink:      #14201a;
+      --deep:     #1c3028;
+      --forest:   #244535;
+      --fern:     #3a6047;
+      --sage:     #6b8f71;
+      --gold:     #c4a247;
+      --gold-lt:  #dfc07e;
+      --sand:     #f4efe3;
+      --linen:    #eae4d5;
+      --parchment:#f9f5ec;
+      --white:    #fdfaf4;
+      --mid:      #5a5a4a;
+      --muted:    #8a8a7a;
+    }
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: 'DM Sans', sans-serif;
+      background: var(--parchment);
+      color: var(--ink);
+      overflow-x: hidden;
+    }
+
+    ::-webkit-scrollbar { width: 5px; }
+    ::-webkit-scrollbar-track { background: var(--linen); }
+    ::-webkit-scrollbar-thumb { background: var(--gold); border-radius: 3px; }
+
+    /* ──────────────────────────────────────
+       NAV
+    ────────────────────────────────────── */
+    nav {
+      position: fixed; top: 0; left: 0; right: 0;
+      z-index: 100;
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 1.2rem 4rem;
+      transition: background 0.4s, box-shadow 0.4s;
+    }
+    nav.scrolled {
+      background: rgba(20,32,26,0.97);
+      backdrop-filter: blur(14px);
+      box-shadow: 0 2px 28px rgba(0,0,0,0.3);
+    }
+    .nav-logo {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.45rem; font-weight: 500;
+      color: var(--white);
+      text-decoration: none; letter-spacing: 0.05em;
+    }
+    .nav-logo span { color: var(--gold); }
+    .nav-logo small {
+      display: block;
+      font-size: 0.6rem; letter-spacing: 0.25em; text-transform: uppercase;
+      color: rgba(255,255,255,0.5); font-family: 'DM Sans', sans-serif;
+      font-weight: 300; margin-top: 1px;
+    }
+    .nav-links { display: flex; gap: 2.2rem; list-style: none; align-items: center; }
+    .nav-links a {
+      font-size: 0.75rem; letter-spacing: 0.15em; text-transform: uppercase;
+      color: rgba(255,255,255,0.78); text-decoration: none; transition: color 0.2s;
+    }
+    .nav-links a:hover, .nav-links a.active { color: var(--gold-lt); }
+    .nav-cta {
+      background: var(--gold) !important;
+      color: var(--ink) !important;
+      padding: 0.5rem 1.3rem; border-radius: 2px; font-weight: 500;
+    }
+    .nav-cta:hover { background: var(--gold-lt) !important; }
+    .hamburger { display: none; flex-direction: column; gap: 5px; cursor: pointer; z-index: 200; }
+    .hamburger span { display: block; width: 22px; height: 1.5px; background: var(--white); transition: 0.3s; }
+
+    /* ──────────────────────────────────────
+       HERO
+    ────────────────────────────────────── */
+    #hero {
+      min-height: 100vh;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      position: relative;
+      overflow: hidden;
+    }
+    .hero-visual {
+      position: relative;
+      background:
+        linear-gradient(135deg, rgba(20,32,26,0.82) 0%, rgba(36,69,53,0.6) 60%, rgba(20,32,26,0.75) 100%),
+        url('https://images.unsplash.com/photo-1497366216548-37526070297c?w=1400&q=80') center/cover no-repeat;
+    }
+    .hero-visual-overlay {
+      position: absolute; inset: 0;
+      background: repeating-linear-gradient(
+        0deg,
+        transparent,
+        transparent 48px,
+        rgba(255,255,255,0.025) 48px,
+        rgba(255,255,255,0.025) 49px
+      );
+    }
+    .hero-text {
+      background: var(--ink);
+      display: flex; flex-direction: column;
+      justify-content: center;
+      padding: 8rem 5rem 5rem 5rem;
+      position: relative;
+    }
+    .hero-text::before {
+      content: '';
+      position: absolute; top: 0; left: 0; right: 0; height: 3px;
+      background: linear-gradient(to right, var(--gold), transparent);
+    }
+    .site-badge {
+      display: inline-flex; align-items: center; gap: 0.6rem;
+      background: rgba(196,162,71,0.12);
+      border: 1px solid rgba(196,162,71,0.3);
+      color: var(--gold-lt);
+      font-size: 0.65rem; letter-spacing: 0.25em; text-transform: uppercase;
+      padding: 0.4rem 0.9rem; border-radius: 2px;
+      margin-bottom: 2rem;
+      width: fit-content;
+      animation: fadeRight 0.8s 0.1s both;
+    }
+    .site-badge::before { content: '●'; font-size: 0.5rem; }
+    .hero-eyebrow {
+      font-size: 0.68rem; letter-spacing: 0.3em; text-transform: uppercase;
+      color: var(--sage); margin-bottom: 1rem;
+      animation: fadeRight 0.8s 0.2s both;
+    }
+    .hero-title {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(2.4rem, 4vw, 3.8rem);
+      font-weight: 300;
+      color: var(--white);
+      line-height: 1.1;
+      animation: fadeRight 0.8s 0.3s both;
+    }
+    .hero-title em { font-style: italic; color: var(--gold-lt); }
+    .hero-divider {
+      width: 48px; height: 1px;
+      background: var(--gold); margin: 2rem 0;
+      animation: fadeRight 0.8s 0.4s both;
+    }
+    .hero-desc {
+      font-size: 0.92rem; line-height: 1.85;
+      color: rgba(255,255,255,0.62);
+      max-width: 420px;
+      animation: fadeRight 0.8s 0.5s both;
+    }
+    .hero-led-by {
+      margin-top: 2rem;
+      display: flex; align-items: center; gap: 1rem;
+      animation: fadeRight 0.8s 0.6s both;
+    }
+    .led-avatar {
+      width: 52px; height: 52px; border-radius: 50%;
+      background: var(--fern);
+      display: flex; align-items: center; justify-content: center;
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.3rem; font-weight: 500;
+      color: var(--gold);
+      border: 2px solid var(--gold);
+      flex-shrink: 0;
+    }
+    .led-text { font-size: 0.82rem; }
+    .led-text strong { color: var(--white); font-weight: 500; display: block; }
+    .led-text span { color: var(--muted); font-size: 0.74rem; }
+    .hero-actions {
+      margin-top: 2.8rem; display: flex; gap: 1rem; flex-wrap: wrap;
+      animation: fadeRight 0.8s 0.7s both;
+    }
+    .btn-gold {
+      background: var(--gold);
+      color: var(--ink);
+      border: none; cursor: pointer;
+      padding: 0.9rem 2rem;
+      font-family: 'DM Sans', sans-serif;
+      font-size: 0.75rem; letter-spacing: 0.18em; text-transform: uppercase;
+      border-radius: 2px; text-decoration: none; display: inline-block;
+      transition: background 0.2s, transform 0.2s;
+    }
+    .btn-gold:hover { background: var(--gold-lt); transform: translateY(-2px); }
+    .btn-ghost {
+      background: transparent;
+      color: rgba(255,255,255,0.75);
+      border: 1px solid rgba(255,255,255,0.25);
+      padding: 0.9rem 2rem;
+      font-family: 'DM Sans', sans-serif;
+      font-size: 0.75rem; letter-spacing: 0.18em; text-transform: uppercase;
+      border-radius: 2px; text-decoration: none; display: inline-block; cursor: pointer;
+      transition: border-color 0.2s, color 0.2s, transform 0.2s;
+    }
+    .btn-ghost:hover { border-color: var(--gold); color: var(--gold-lt); transform: translateY(-2px); }
+
+    /* Vertical label on hero visual */
+    .hero-vertical-label {
+      position: absolute; bottom: 5rem; left: 3rem;
+      writing-mode: vertical-rl;
+      text-orientation: mixed;
+      transform: rotate(180deg);
+      font-size: 0.65rem; letter-spacing: 0.3em; text-transform: uppercase;
+      color: rgba(255,255,255,0.35);
+      display: flex; align-items: center; gap: 1rem;
+    }
+    .hero-vertical-label::before {
+      content: '';
+      display: block; width: 1px; height: 50px;
+      background: var(--gold); opacity: 0.6;
+    }
+
+    /* Stat floating card */
+    .stat-card {
+      position: absolute; bottom: 5rem; right: 4rem;
+      background: rgba(255,255,255,0.07);
+      backdrop-filter: blur(10px);
+      border: 1px solid rgba(196,162,71,0.25);
+      border-radius: 3px;
+      padding: 1.5rem 2rem;
+      text-align: center;
+    }
+    .stat-card .num {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 3.5rem; font-weight: 300;
+      color: var(--gold); line-height: 1;
+    }
+    .stat-card .label {
+      font-size: 0.68rem; letter-spacing: 0.18em; text-transform: uppercase;
+      color: rgba(255,255,255,0.5); margin-top: 0.4rem;
+    }
+
+    /* ──────────────────────────────────────
+       INTRO STRIP
+    ────────────────────────────────────── */
+    .intro-strip {
+      background: var(--gold);
+      padding: 1.4rem 4rem;
+      display: flex; align-items: center; justify-content: space-between; gap: 2rem;
+      flex-wrap: wrap;
+    }
+    .intro-strip p {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.15rem; font-style: italic; font-weight: 400;
+      color: var(--ink);
+      max-width: 680px;
+      line-height: 1.5;
+    }
+    .intro-strip-location {
+      font-size: 0.72rem; letter-spacing: 0.18em; text-transform: uppercase;
+      color: rgba(20,32,26,0.65);
+      text-align: right;
+      flex-shrink: 0;
+    }
+
+    /* ──────────────────────────────────────
+       ABOUT / DESCRIPTION
+    ────────────────────────────────────── */
+    #about {
+      display: grid;
+      grid-template-columns: 1fr 1.1fr;
+      gap: 0;
+      min-height: 70vh;
+    }
+    .about-visual {
+      position: relative;
+      background:
+        linear-gradient(to bottom right, rgba(28,48,40,0.55), rgba(20,32,26,0.8)),
+        url('https://images.unsplash.com/photo-1524178232363-1fb2b075b655?w=900&q=80') center/cover no-repeat;
+      display: flex; align-items: flex-end;
+      padding: 3.5rem;
+    }
+    .about-visual-card {
+      background: rgba(255,255,255,0.08);
+      backdrop-filter: blur(8px);
+      border: 1px solid rgba(196,162,71,0.25);
+      border-left: 3px solid var(--gold);
+      padding: 1.8rem;
+      color: var(--white);
+    }
+    .about-visual-card h4 {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.1rem; font-weight: 400;
+      color: var(--gold-lt); margin-bottom: 0.6rem;
+    }
+    .about-visual-card p { font-size: 0.82rem; line-height: 1.7; color: rgba(255,255,255,0.65); }
+    .about-content {
+      background: var(--white);
+      padding: 6rem 5rem;
+      display: flex; flex-direction: column; justify-content: center;
+    }
+    .section-tag {
+      font-size: 0.68rem; letter-spacing: 0.3em; text-transform: uppercase;
+      color: var(--gold); margin-bottom: 0.8rem;
+    }
+    .section-title {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(1.9rem, 3.5vw, 2.9rem);
+      font-weight: 400; line-height: 1.15;
+      color: var(--ink);
+    }
+    .section-title em { font-style: italic; color: var(--fern); }
+    .section-rule { width: 44px; height: 2px; background: var(--gold); margin: 1.5rem 0; }
+    .section-body {
+      font-size: 0.92rem; line-height: 1.9;
+      color: var(--mid); margin-bottom: 1rem;
+    }
+
+    /* ──────────────────────────────────────
+       SERVICES
+    ────────────────────────────────────── */
+    #services {
+      background: var(--sand);
+      padding: 7rem 4rem;
+    }
+    .services-header { text-align: center; max-width: 580px; margin: 0 auto 4.5rem; }
+    .services-header .section-rule { margin: 1.5rem auto; }
+    .services-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 2px;
+      background: var(--linen);
+    }
+    .service-card {
+      background: var(--parchment);
+      padding: 3rem 2.5rem;
+      position: relative;
+      transition: background 0.3s;
+      overflow: hidden;
+    }
+    .service-card::before {
+      content: '';
+      position: absolute; top: 0; left: 0; right: 0; height: 3px;
+      background: var(--gold);
+      transform: scaleX(0); transform-origin: left;
+      transition: transform 0.4s;
+    }
+    .service-card:hover::before { transform: scaleX(1); }
+    .service-card:hover { background: var(--white); }
+    .service-number {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 3.5rem; font-weight: 300;
+      color: var(--linen);
+      position: absolute; top: 1.5rem; right: 2rem;
+      line-height: 1;
+      transition: color 0.3s;
+    }
+    .service-card:hover .service-number { color: rgba(196,162,71,0.15); }
+    .service-icon { font-size: 2rem; margin-bottom: 1.2rem; }
+    .service-name {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.4rem; font-weight: 500;
+      color: var(--ink); margin-bottom: 0.8rem;
+    }
+    .service-desc {
+      font-size: 0.85rem; line-height: 1.75;
+      color: var(--mid);
+    }
+    .service-link {
+      display: inline-flex; align-items: center; gap: 0.5rem;
+      font-size: 0.72rem; letter-spacing: 0.15em; text-transform: uppercase;
+      color: var(--gold); text-decoration: none;
+      margin-top: 1.5rem;
+      border-bottom: 1px solid transparent;
+      transition: border-color 0.2s;
+    }
+    .service-link:hover { border-color: var(--gold); }
+    .service-link::after { content: '→'; }
+
+    /* ──────────────────────────────────────
+       FOUR PILLARS
+    ────────────────────────────────────── */
+    #pillars { padding: 7rem 4rem; background: var(--ink); }
+    .pillars-header { text-align: center; margin-bottom: 4rem; }
+    .pillars-header .section-title { color: var(--white); }
+    .pillars-header .section-rule { margin: 1.4rem auto; }
+    .pillars-grid {
+      display: grid;
+      grid-template-columns: repeat(4,1fr);
+      gap: 0;
+    }
+    .pillar {
+      padding: 3.5rem 2.5rem;
+      border-right: 1px solid rgba(255,255,255,0.08);
+      position: relative;
+      transition: background 0.3s;
+    }
+    .pillar:last-child { border-right: none; }
+    .pillar:hover { background: rgba(255,255,255,0.04); }
+    .pillar-num {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 0.85rem; letter-spacing: 0.2em;
+      color: var(--gold); margin-bottom: 1.5rem;
+    }
+    .pillar-icon { font-size: 2rem; margin-bottom: 1.2rem; display: block; }
+    .pillar-name {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.5rem; font-weight: 400;
+      color: var(--white); margin-bottom: 0.8rem;
+    }
+    .pillar-desc { font-size: 0.83rem; line-height: 1.75; color: rgba(255,255,255,0.5); }
+    .pillar-rule { width: 30px; height: 1px; background: var(--gold); margin-bottom: 1.4rem; }
+
+    /* ──────────────────────────────────────
+       CTA BAND
+    ────────────────────────────────────── */
+    #cta {
+      background:
+        linear-gradient(to right, rgba(28,48,40,0.92), rgba(36,69,53,0.88)),
+        url('https://images.unsplash.com/photo-1600880292203-757bb62b4baf?w=1400&q=80') center/cover no-repeat;
+      padding: 7rem 4rem;
+      text-align: center;
+    }
+    #cta .section-tag { color: var(--gold-lt); }
+    #cta .section-title { color: var(--white); margin-bottom: 0.5rem; }
+    #cta .section-rule { margin: 1.5rem auto; }
+    #cta p { color: rgba(255,255,255,0.65); max-width: 520px; margin: 0 auto 2.8rem; font-size: 0.92rem; line-height: 1.8; }
+    .cta-actions { display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap; }
+
+    /* ──────────────────────────────────────
+       CONTACT MODAL
+    ────────────────────────────────────── */
+    .modal-overlay {
+      display: none;
+      position: fixed; inset: 0; z-index: 999;
+      background: rgba(14,22,18,0.88);
+      backdrop-filter: blur(8px);
+      align-items: center; justify-content: center;
+    }
+    .modal-overlay.open { display: flex; }
+    .modal {
+      background: var(--white);
+      width: 90%; max-width: 560px;
+      max-height: 90vh; overflow-y: auto;
+      border-radius: 2px;
+      animation: slideUp 0.35s both;
+    }
+    .modal-header {
+      background: var(--deep);
+      padding: 2rem 2.4rem;
+      display: flex; align-items: flex-start; justify-content: space-between;
+    }
+    .modal-header-inner h3 {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.6rem; font-weight: 400; color: var(--white);
+    }
+    .modal-header-inner p { font-size: 0.78rem; color: rgba(255,255,255,0.5); margin-top: 0.3rem; }
+    .modal-close {
+      background: none; border: none; color: rgba(255,255,255,0.5);
+      font-size: 1.4rem; cursor: pointer; transition: color 0.2s; padding: 0; line-height: 1;
+    }
+    .modal-close:hover { color: var(--white); }
+    .modal-body { padding: 2.2rem; }
+    .form-group { margin-bottom: 1.2rem; }
+    .form-group label {
+      display: block; font-size: 0.7rem; letter-spacing: 0.12em; text-transform: uppercase;
+      color: var(--mid); margin-bottom: 0.4rem;
+    }
+    .form-group input,
+    .form-group select,
+    .form-group textarea {
+      width: 100%; border: 1px solid #ddd; border-radius: 2px;
+      padding: 0.75rem 1rem; font-family: 'DM Sans', sans-serif;
+      font-size: 0.88rem; color: var(--ink); background: var(--white);
+      transition: border-color 0.2s;
+    }
+    .form-group input:focus,
+    .form-group select:focus,
+    .form-group textarea:focus { outline: none; border-color: var(--gold); }
+    .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
+    .btn-submit {
+      width: 100%; background: var(--deep); color: var(--gold);
+      border: none; padding: 1.05rem;
+      font-family: 'DM Sans', sans-serif; font-size: 0.78rem;
+      letter-spacing: 0.18em; text-transform: uppercase;
+      cursor: pointer; border-radius: 2px;
+      transition: background 0.2s;
+    }
+    .btn-submit:hover { background: var(--forest); }
+
+    /* ──────────────────────────────────────
+       ADDRESS SECTION
+    ────────────────────────────────────── */
+    #address-section {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      min-height: 420px;
+    }
+    .address-panel {
+      background: var(--forest);
+      padding: 5rem 4.5rem;
+      display: flex; flex-direction: column; justify-content: center;
+    }
+    .address-panel .section-tag { color: var(--gold-lt); }
+    .address-panel h2 {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 2rem; font-weight: 400;
+      color: var(--white); margin: 1rem 0 0.6rem;
+    }
+    .address-text {
+      font-size: 0.9rem; line-height: 1.9;
+      color: rgba(255,255,255,0.65);
+    }
+    .address-details {
+      margin-top: 2rem; display: flex; flex-direction: column; gap: 1rem;
+    }
+    .addr-row {
+      display: flex; align-items: flex-start; gap: 0.8rem;
+      font-size: 0.85rem; color: rgba(255,255,255,0.65);
+    }
+    .addr-icon { color: var(--gold); flex-shrink: 0; font-size: 1rem; margin-top: 0.1rem; }
+    .addr-row strong { color: rgba(255,255,255,0.9); display: block; font-size: 0.75rem; letter-spacing: 0.08em; text-transform: uppercase; margin-bottom: 0.1rem; }
+    .map-panel {
+      background: #ccc;
+    }
+    .map-panel iframe { width: 100%; height: 100%; border: none; display: block; }
+
+    /* ──────────────────────────────────────
+       FOOTER
+    ────────────────────────────────────── */
+    footer {
+      background: var(--ink);
+      padding: 3rem 4rem;
+      display: grid;
+      grid-template-columns: 1fr 1fr 1fr;
+      gap: 2rem;
+      align-items: start;
+    }
+    .footer-brand {}
+    .footer-brand h3 {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.3rem; font-weight: 400;
+      color: var(--white); margin-bottom: 0.3rem;
+    }
+    .footer-brand h3 span { color: var(--gold); }
+    .footer-brand p { font-size: 0.75rem; color: rgba(255,255,255,0.4); line-height: 1.6; }
+    .footer-nav ul { list-style: none; display: flex; flex-direction: column; gap: 0.5rem; }
+    .footer-nav h4 {
+      font-size: 0.65rem; letter-spacing: 0.2em; text-transform: uppercase;
+      color: var(--gold); margin-bottom: 0.9rem;
+    }
+    .footer-nav a {
+      font-size: 0.82rem; color: rgba(255,255,255,0.5);
+      text-decoration: none; transition: color 0.2s;
+    }
+    .footer-nav a:hover { color: var(--gold-lt); }
+    .footer-legal {
+      font-size: 0.73rem; color: rgba(255,255,255,0.3);
+      line-height: 1.8;
+      text-align: right;
+    }
+    .footer-legal a { color: var(--gold); text-decoration: none; }
+    .footer-bottom {
+      background: #0c1610;
+      padding: 1.2rem 4rem;
+      display: flex; align-items: center; justify-content: space-between;
+      flex-wrap: wrap; gap: 1rem;
+    }
+    .footer-bottom p { font-size: 0.72rem; color: rgba(255,255,255,0.3); }
+    .footer-bottom a { color: var(--gold); text-decoration: none; }
+
+    /* ──────────────────────────────────────
+       TOAST
+    ────────────────────────────────────── */
+    .toast {
+      position: fixed; bottom: 2rem; right: 2rem;
+      background: var(--fern); color: var(--white);
+      padding: 1rem 1.8rem; border-radius: 3px;
+      font-size: 0.88rem; z-index: 9999;
+      transform: translateY(6rem); transition: transform 0.4s;
+      box-shadow: 0 8px 24px rgba(0,0,0,0.25);
+    }
+    .toast.show { transform: translateY(0); }
+
+    /* ──────────────────────────────────────
+       ANIMATIONS
+    ────────────────────────────────────── */
+    @keyframes fadeRight {
+      from { opacity: 0; transform: translateX(-20px); }
+      to   { opacity: 1; transform: translateX(0); }
+    }
+    @keyframes slideUp {
+      from { opacity: 0; transform: translateY(28px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+
+    /* ──────────────────────────────────────
+       RESPONSIVE
+    ────────────────────────────────────── */
+    @media (max-width: 960px) {
+      nav { padding: 1.2rem 1.5rem; }
+      .nav-links { display: none; }
+      .nav-links.open {
+        display: flex; flex-direction: column;
+        position: fixed; inset: 0;
+        background: var(--ink);
+        align-items: center; justify-content: center;
+        gap: 2rem; z-index: 150;
+      }
+      .nav-links.open a { font-size: 1.2rem; }
+      .hamburger { display: flex; }
+
+      #hero { grid-template-columns: 1fr; min-height: auto; }
+      .hero-visual { min-height: 50vh; }
+      .hero-text { padding: 5rem 1.8rem 3.5rem; }
+      .stat-card { position: static; margin: 2rem 3rem; }
+      .hero-vertical-label { display: none; }
+
+      .intro-strip { padding: 1.2rem 1.8rem; }
+
+      #about { grid-template-columns: 1fr; }
+      .about-visual { min-height: 340px; padding: 2rem; }
+      .about-content { padding: 4rem 1.8rem; }
+
+      #services { padding: 5rem 1.5rem; }
+      .services-grid { grid-template-columns: 1fr; }
+
+      #pillars { padding: 5rem 1.5rem; }
+      .pillars-grid { grid-template-columns: 1fr 1fr; }
+
+      #cta { padding: 5rem 1.8rem; }
+
+      #address-section { grid-template-columns: 1fr; }
+      .address-panel { padding: 4rem 1.8rem; }
+      .map-panel { min-height: 300px; }
+
+      footer { grid-template-columns: 1fr; padding: 3rem 1.8rem; }
+      .footer-legal { text-align: left; }
+      .footer-bottom { padding: 1.2rem 1.8rem; }
+
+      .form-row { grid-template-columns: 1fr; }
+    }
+    @media (max-width: 600px) {
+      .pillars-grid { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- ══════════════════════════════════════
+     NAVIGATION
+══════════════════════════════════════ -->
+<nav id="navbar">
+  <a href="index.html" class="nav-logo">
+    Palena <span>Gardens</span>
+    <small>Windy Ridge Centre</small>
+  </a>
+  <ul class="nav-links" id="navLinks">
+    <li><a href="index.html">Home</a></li>
+    <li><a href="centre.html" class="active">The Centre</a></li>
+    <li><a href="index.html#rooms">Hospitality</a></li>
+    <li><a href="#about">About</a></li>
+    <li><a href="#" onclick="openConsult(); return false;" class="nav-cta">Contact</a></li>
+  </ul>
+  <div class="hamburger" id="hamburger" onclick="toggleMenu()">
+    <span></span><span></span><span></span>
+  </div>
+</nav>
+
+<!-- ══════════════════════════════════════
+     HERO
+══════════════════════════════════════ -->
+<section id="hero">
+  <div class="hero-visual">
+    <div class="hero-visual-overlay"></div>
+    <div class="hero-vertical-label">142 Broadleaf Street · Takoradi</div>
+    <div class="stat-card">
+      <div class="num">20<span style="font-size:1.8rem">+</span></div>
+      <div class="label">Years of Experience</div>
+    </div>
+  </div>
+
+  <div class="hero-text">
+    <div class="site-badge">Site A — Windy Ridge</div>
+    <p class="hero-eyebrow">Centre for Leadership, Wellbeing & Culture</p>
+    <h1 class="hero-title">
+      An International Hub for<br/>
+      <em>Organizational Excellence</em>
+    </h1>
+    <div class="hero-divider"></div>
+    <p class="hero-desc">
+      Palena Gardens is dedicated to Organizational Consultancy, Group Relations, and professional wellbeing — a sanctuary for leaders to reflect and resolve complex organizational dynamics through systemic psychodynamic insight.
+    </p>
+    <div class="hero-led-by">
+      <div class="led-avatar">AS</div>
+      <div class="led-text">
+        <strong>Augustine Sagoe</strong>
+        <span>Founder & Lead Consultant</span>
+      </div>
+    </div>
+    <div class="hero-actions">
+      <button class="btn-gold" onclick="openConsult()">Request a Consultation</button>
+      <a href="#services" class="btn-ghost">Our Services</a>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════
+     INTRO STRIP
+══════════════════════════════════════ -->
+<div class="intro-strip">
+  <p>"A secluded, campus-like atmosphere for executive coaching and cultural inquiry — where deep thinking meets purposeful action."</p>
+  <div class="intro-strip-location">
+    142 Broadleaf Street<br/>Windy Ridge, Takoradi
+  </div>
+</div>
+
+<!-- ══════════════════════════════════════
+     ABOUT
+══════════════════════════════════════ -->
+<section id="about">
+  <div class="about-visual">
+    <div class="about-visual-card reveal">
+      <h4>Our Philosophy</h4>
+      <p>
+        We apply systemic psychodynamic insight to illuminate what lies beneath the surface of organizational life — helping leaders and teams navigate authority, identity, and change with clarity and courage.
+      </p>
+    </div>
+  </div>
+  <div class="about-content">
+    <div class="reveal">
+      <p class="section-tag">About the Windy Ridge Site</p>
+      <h2 class="section-title">Where Deep Thinking Meets<br/><em>Purposeful Action</em></h2>
+      <div class="section-rule"></div>
+      <p class="section-body">
+        Our Windy Ridge campus is the primary seat of Palena Gardens' consultancy practice. Set within a quiet, campus-like estate on Broadleaf Street, it offers an environment deliberately designed to slow down the noise of organizational life — creating the conditions for genuine insight and transformation.
+      </p>
+      <p class="section-body">
+        Led by Augustine Sagoe, a practitioner with over 20 years of experience at the intersection of organizational psychology, group relations, and executive development, our team brings rigorous frameworks and deep human sensitivity to every engagement.
+      </p>
+      <p class="section-body">
+        Whether you bring us a persistent team conflict, a strategic inflection point, or the quiet erosion of organisational culture — we meet you where you are.
+      </p>
+      <div style="margin-top:2rem;">
+        <button class="btn-gold" onclick="openConsult()">Begin a Conversation</button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════
+     SERVICES
+══════════════════════════════════════ -->
+<section id="services">
+  <div class="services-header reveal">
+    <p class="section-tag">What We Offer</p>
+    <h2 class="section-title">Our <em>Services</em></h2>
+    <div class="section-rule"></div>
+    <p style="font-size:0.9rem;line-height:1.8;color:var(--mid);">
+      Three core disciplines — each rooted in depth practice, delivered with professional rigour.
+    </p>
+  </div>
+
+  <div class="services-grid">
+    <div class="service-card reveal">
+      <div class="service-number">01</div>
+      <div class="service-icon">🏛</div>
+      <h3 class="service-name">Organizational Consultancy</h3>
+      <p class="service-desc">
+        Systemic psychodynamic insight applied to complex organizational challenges. We work with boards, executive teams, and institutions navigating structural change, cultural drift, or strategic uncertainty.
+      </p>
+      <a href="#" class="service-link" onclick="openConsult(); return false;">Enquire</a>
+    </div>
+
+    <div class="service-card reveal">
+      <div class="service-number">02</div>
+      <div class="service-icon">🔄</div>
+      <h3 class="service-name">Group Relations Conferences</h3>
+      <p class="service-desc">
+        Immersive residential and day conferences exploring the dynamics of authority, leadership, followership, and group behaviour. Based on the Tavistock methodology, adapted for the African organisational context.
+      </p>
+      <a href="#" class="service-link" onclick="openConsult(); return false;">Enquire</a>
+    </div>
+
+    <div class="service-card reveal">
+      <div class="service-number">03</div>
+      <div class="service-icon">🧭</div>
+      <h3 class="service-name">Executive Coaching</h3>
+      <p class="service-desc">
+        One-on-one coaching for senior leaders navigating change, uncertainty, and the personal demands of leadership. Confidential, rigorous, and grounded in both psychological depth and practical wisdom.
+      </p>
+      <a href="#" class="service-link" onclick="openConsult(); return false;">Enquire</a>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════
+     FOUR PILLARS
+══════════════════════════════════════ -->
+<section id="pillars">
+  <div class="pillars-header reveal">
+    <p class="section-tag" style="color:var(--gold-lt);">Our Foundation</p>
+    <h2 class="section-title" style="color:var(--white);">The Four <em style="color:var(--gold-lt);">Pillars</em></h2>
+    <div class="section-rule" style="margin:1.4rem auto;"></div>
+    <p style="color:rgba(255,255,255,0.5);max-width:520px;margin:0 auto;font-size:0.88rem;line-height:1.8;">
+      Everything we do at Palena Gardens flows from four interconnected commitments.
+    </p>
+  </div>
+  <div class="pillars-grid">
+    <div class="pillar reveal">
+      <div class="pillar-rule"></div>
+      <div class="pillar-num">I</div>
+      <span class="pillar-icon">🧭</span>
+      <h3 class="pillar-name">Leadership</h3>
+      <p class="pillar-desc">Expert consultancy and Group Relations conferences to develop leaders who act from authority, not anxiety.</p>
+    </div>
+    <div class="pillar reveal">
+      <div class="pillar-rule"></div>
+      <div class="pillar-num">II</div>
+      <span class="pillar-icon">🌿</span>
+      <h3 class="pillar-name">Wellbeing</h3>
+      <p class="pillar-desc">Contemplative garden spaces and structured practices for mental clarity and professional renewal.</p>
+    </div>
+    <div class="pillar reveal">
+      <div class="pillar-rule"></div>
+      <div class="pillar-num">III</div>
+      <span class="pillar-icon">🥁</span>
+      <h3 class="pillar-name">Culture</h3>
+      <p class="pillar-desc">A stage for heritage, arts, and intellectual exchange — celebrating the depth of African organisational and cultural identity.</p>
+    </div>
+    <div class="pillar reveal">
+      <div class="pillar-rule"></div>
+      <div class="pillar-num">IV</div>
+      <span class="pillar-icon">🏨</span>
+      <h3 class="pillar-name">Stays</h3>
+      <p class="pillar-desc">International standard accommodation across our two Takoradi locations — seamlessly supporting residential programmes.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════
+     CTA BAND
+══════════════════════════════════════ -->
+<section id="cta">
+  <div class="reveal" style="text-align:center;">
+    <p class="section-tag">Ready to Begin Your Journey?</p>
+    <h2 class="section-title" style="color:var(--white);">Whether You're Navigating Change<br/>or Seeking <em style="color:var(--gold-lt);">Deeper Clarity</em></h2>
+    <div class="section-rule" style="margin:1.5rem auto;"></div>
+    <p>Palena Gardens is here to guide you — with rigour, warmth, and the wisdom of experience.</p>
+    <div class="cta-actions">
+      <button class="btn-gold" onclick="openConsult()">Get in Touch</button>
+      <a href="index.html#rooms" class="btn-ghost">Explore Accommodation</a>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════
+     ADDRESS + MAP
+══════════════════════════════════════ -->
+<section id="address-section">
+  <div class="address-panel reveal">
+    <p class="section-tag">Find Us</p>
+    <h2>Windy Ridge<br/>Campus</h2>
+    <p class="address-text">
+      Our primary consultancy and conference site, set in a quiet, campus-like estate in New Takoradi.
+    </p>
+    <div class="address-details">
+      <div class="addr-row">
+        <span class="addr-icon">📍</span>
+        <div>
+          <strong>Address</strong>
+          142 Broadleaf Street, Windy Ridge<br/>Sekondi-Takoradi, Western Region, Ghana
+        </div>
+      </div>
+      <div class="addr-row">
+        <span class="addr-icon">✉️</span>
+        <div>
+          <strong>Email</strong>
+          centre@palenagardens.com
+        </div>
+      </div>
+      <div class="addr-row">
+        <span class="addr-icon">📞</span>
+        <div>
+          <strong>Phone</strong>
+          +233 30 200 0000
+        </div>
+      </div>
+      <div class="addr-row">
+        <span class="addr-icon">🕐</span>
+        <div>
+          <strong>Office Hours</strong>
+          Mon – Fri: 8:00 AM – 5:00 PM
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="map-panel">
+    <iframe
+      src="https://maps.google.com/maps?q=Windy+Ridge,+Takoradi,+Ghana&output=embed"
+      allowfullscreen loading="lazy"
+      referrerpolicy="no-referrer-when-downgrade">
+    </iframe>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════
+     FOOTER
+══════════════════════════════════════ -->
+<footer>
+  <div class="footer-brand">
+    <h3>Palena <span>Gardens</span></h3>
+    <p>Centre for Leadership,<br/>Wellbeing & Culture<br/><br/>Licensed by the Ghana Tourism Authority (GTA)<br/>GTA License No: GTA/WR/GH/2024-XXXX</p>
+  </div>
+  <div class="footer-nav">
+    <h4>Navigation</h4>
+    <ul>
+      <li><a href="index.html">Home</a></li>
+      <li><a href="centre.html">The Centre</a></li>
+      <li><a href="index.html#rooms">Hospitality</a></li>
+      <li><a href="#about">About</a></li>
+      <li><a href="#" onclick="openConsult(); return false;">Contact</a></li>
+    </ul>
+  </div>
+  <div class="footer-legal">
+    <p>© 2026 Palena Gardens. All rights reserved.</p>
+    <p style="margin-top:0.5rem;">142 Broadleaf Street, Windy Ridge<br/>Takoradi, Ghana</p>
+    <p style="margin-top:0.5rem;"><a href="mailto:centre@palenagardens.com">centre@palenagardens.com</a></p>
+  </div>
+</footer>
+<div class="footer-bottom">
+  <p>© 2026 Palena Gardens · <a href="index.html">Main Site</a> · <a href="centre.html">The Centre</a></p>
+  <p style="font-size:0.68rem;color:rgba(255,255,255,0.2);">Licensed by the Ghana Tourism Authority · GTA/WR/GH/2024-XXXX</p>
+</div>
+
+<!-- ══════════════════════════════════════
+     CONSULTATION MODAL
+══════════════════════════════════════ -->
+<div class="modal-overlay" id="consultModal">
+  <div class="modal">
+    <div class="modal-header">
+      <div class="modal-header-inner">
+        <h3>Request a Consultation</h3>
+        <p>Centre for Leadership, Wellbeing & Culture — Windy Ridge</p>
+      </div>
+      <button class="modal-close" onclick="closeConsult()">✕</button>
+    </div>
+    <div class="modal-body">
+      <div class="form-row">
+        <div class="form-group">
+          <label>Your Name</label>
+          <input type="text" id="cName" placeholder="Full Name"/>
+        </div>
+        <div class="form-group">
+          <label>Organisation</label>
+          <input type="text" id="cOrg" placeholder="Company / Institution"/>
+        </div>
+      </div>
+      <div class="form-group">
+        <label>Email Address</label>
+        <input type="email" id="cEmail" placeholder="you@organisation.com"/>
+      </div>
+      <div class="form-group">
+        <label>Phone Number</label>
+        <input type="tel" id="cPhone" placeholder="+233 24 000 0000"/>
+      </div>
+      <div class="form-group">
+        <label>Area of Interest</label>
+        <select id="cService">
+          <option value="">— Select a Service —</option>
+          <option>Organizational Consultancy</option>
+          <option>Group Relations Conference</option>
+          <option>Executive Coaching</option>
+          <option>Leadership Retreat</option>
+          <option>Team Offsite</option>
+          <option>Other / Not Sure Yet</option>
+        </select>
+      </div>
+      <div class="form-group">
+        <label>Your Message</label>
+        <textarea id="cMessage" rows="4" placeholder="Briefly describe what you're navigating — what brings you here?"></textarea>
+      </div>
+      <button class="btn-submit" onclick="submitConsult()">Send Enquiry</button>
+      <p style="text-align:center;font-size:0.72rem;color:var(--muted);margin-top:0.8rem;">
+        A member of our team will respond within 24 hours.
+      </p>
+    </div>
+  </div>
+</div>
+
+<div class="toast" id="toast"></div>
+
+<script>
+  /* ── NAV SCROLL ── */
+  const nav = document.getElementById('navbar');
+  window.addEventListener('scroll', () => {
+    nav.classList.toggle('scrolled', window.scrollY > 60);
+  });
+
+  /* ── MOBILE MENU ── */
+  function toggleMenu() {
+    document.getElementById('navLinks').classList.toggle('open');
+  }
+  document.querySelectorAll('#navLinks a').forEach(a =>
+    a.addEventListener('click', () => document.getElementById('navLinks').classList.remove('open'))
+  );
+
+  /* ── SCROLL REVEAL ── */
+  const reveals = document.querySelectorAll('.reveal');
+  const obs = new IntersectionObserver(entries => {
+    entries.forEach(e => {
+      if (e.isIntersecting) {
+        e.target.style.opacity = '1';
+        e.target.style.transform = 'translateY(0)';
+      }
+    });
+  }, { threshold: 0.1 });
+  reveals.forEach(el => {
+    el.style.opacity = '0';
+    el.style.transform = 'translateY(28px)';
+    el.style.transition = 'opacity 0.7s ease, transform 0.7s ease';
+    obs.observe(el);
+  });
+
+  /* ── MODAL ── */
+  function openConsult() {
+    document.getElementById('consultModal').classList.add('open');
+    document.body.style.overflow = 'hidden';
+  }
+  function closeConsult() {
+    document.getElementById('consultModal').classList.remove('open');
+    document.body.style.overflow = '';
+  }
+  document.getElementById('consultModal').addEventListener('click', function(e) {
+    if (e.target === this) closeConsult();
+  });
+
+  function submitConsult() {
+    const name    = document.getElementById('cName').value.trim();
+    const email   = document.getElementById('cEmail').value.trim();
+    const service = document.getElementById('cService').value;
+    const message = document.getElementById('cMessage').value.trim();
+
+    if (!name || !email || !service || !message) {
+      showToast('Please fill in all required fields.');
+      return;
+    }
+    if (!/\S+@\S+\.\S+/.test(email)) {
+      showToast('Please enter a valid email address.');
+      return;
+    }
+
+    // In production, send to your backend / CRM here
+    console.log({ name, email, service, message,
+      org: document.getElementById('cOrg').value,
+      phone: document.getElementById('cPhone').value });
+
+    closeConsult();
+    showToast('✅ Your enquiry has been sent. We will be in touch within 24 hours.');
+
+    // Reset
+    ['cName','cOrg','cEmail','cPhone','cMessage'].forEach(id =>
+      document.getElementById(id).value = '');
+    document.getElementById('cService').selectedIndex = 0;
+  }
+
+  /* ── TOAST ── */
+  let tt;
+  function showToast(msg) {
+    const t = document.getElementById('toast');
+    t.textContent = msg;
+    t.classList.add('show');
+    clearTimeout(tt);
+    tt = setTimeout(() => t.classList.remove('show'), 4500);
+  }
+</script>
+</body>
+</html>
